@@ -5,7 +5,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://developers.padmoney.com"
 url_blog: "https://blog.padmoney.com"
-url_site: "https://www.padmoney.com"
+url_site: "https://padmoney.com"
 github_username: padmoney
 
 # Build settings
