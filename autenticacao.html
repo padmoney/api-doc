@@ -1,0 +1,24 @@
+---
+layout: page
+---
+
+<div class="titulo_wrap">
+    <h1>Autentificação</h1>
+    <p class="breadcrumb">home > Autentificação</p>
+</div>
+<div class="bloco">
+    <h2>Autenticação</h2>
+    <p>Atualmente é possível autenticar na API do Padmoney usando Token de Acesso:</p>
+</div>
+
+<div class="bloco">
+    <h2>Token de Acesso</h2>
+    <p>Para poder usar a autenticação via Token de Acesso, você precisa gerar e pegar o seu Token, onde será necessário informar uma Chave de Segurança, nas configurações da sua conta.</p>
+    <p>Após a geração do Token, com a Chave de Segurança e o Token em mãos, basta enviar no header da requisição essa informações.</p>
+    <p>Exemplo de requisição autenticada (onde <code>QwertYuiopAsdfghjklZxcvBnm</code> é o Token de Acesso do usuário e <code>Br3z0</code> é a chave de segurança):</p>
+
+    <pre id="post">GET /v2/ping
+Padmoney-Token: QwertYuiopAsdfghjklZxcvBnm
+Padmoney-Token-Secret: Br3z0</pre>
+
+</div>

@@ -1,0 +1,76 @@
+---
+layout: page
+---
+
+<div class="titulo_wrap">
+    <h1>Introdução</h1>
+    <p class="breadcrumb">home</p>
+</div>
+<div class="bloco">
+    <h2 id="endpoint">Introdução</h2>
+    <p>O Padmoney oferece aos desenvolvedores uma API simples e poderosa em REST para integrar pagamentos por boletos bancários em seu site ou aplicação.</p>
+    <p>Antes de prosseguir, <a href="https://padmoney.com/signup">crie sua conta</a> no Padmoney.</p>
+</div>
+<div class="bloco">
+    <h2 id="endpoint">Endpoint da API</h2>
+    <p>A URL Base da API é <strong><code>https://api.padmoney.com/v2/</code></strong>.</p>
+    <p>Todas as requisições devem usar o schema <code>https</code> por questões de segurança.</p>
+</div>
+<div class="bloco">
+    <h2 id="especificacoes">Especificações</h2>
+
+    <h3>Formato</h3>
+    <p>A API aceita apenas o formato <code>JSON</code>, sendo assim todas as requisições usam content type <code>application/json</code>.</p>
+
+    <h3>Data</h3>
+    <p> Formato: <code>YYYY-MM-DD</code></p>
+    <p>Exemplo: <code>"data_vencimento":"2015-05-22"</code></p>
+
+    <h3>Valores</h3>
+    <p> Formato: <code>99999.99</code></p>
+    <p>Exemplo: <code>"valor":1234.56</code></p>
+</div>
+<div class="bloco">
+    <h2 id="cod-retorno">Códigos de Retorno</h2>
+    <p> A API retorna os códigos de resposta HTTP. Estas são as informações mais relevantes: </p>
+    <table border="1" id="codRetorno">
+        <thead>
+            <th>Código</th>
+            <th>Descrição</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>200 OK</td>
+                <td>A chamada foi bem sucedida.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>A requisição é inválida, em geral conteúdo mal formado.</td>
+            </tr>
+            <tr>
+                <td>401 Unauthorized</td>
+                <td>O usuário e senha ou token de acesso são inválidos.</td>
+            </tr>
+            <tr>
+                <td>403 Forbidden</td>
+                <td>O acesso à API está bloqueado ou o usuário está bloqueado.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>O endereço acessado não existe.</td>
+            </tr>
+            <tr>
+                <td>422 Unprocessable Entity</td>
+                <td>A requisição é válida, mas os dados passados não são válidos.</td>
+            </tr>
+            <tr>
+                <td>429 Too Many Requests </td>
+                <td>O usuário atingiu o limite de requisições.</td>
+            </tr>
+            <tr>
+                <td>500 Internal Server Error</td>
+                <td>Houve um erro interno do servidor ao processar a requisição.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

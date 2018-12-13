@@ -1,0 +1,37 @@
+title: Documentação da API do Padmoney
+email: your-email@padmoney.com
+description: >- # this means to ignore newlines until "baseurl:"
+  API para emissão e cancelamento de boletos bancários com registro.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://developers.padmoney.com"
+url_blog: "https://blog.padmoney.com"
+url_site: "https://www.padmoney.com"
+github_username: padmoney
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+sass:
+  style: compressed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - bower.json
+  - Gemfile
+  - Gemfile.lock
+  - gruntfile.js
+  - node_modules
+  - package-lock.json
+  - package.json
+  - run.sh
+  - scss
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
