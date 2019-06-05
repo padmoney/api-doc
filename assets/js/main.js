@@ -25,11 +25,6 @@ $(document).ready(function() {
       e.clearSelection();
     });
   });
-
-
-  $(window).scroll(function(event) {
-    barraLateral();
-  });
 });
 
 // **********************************
