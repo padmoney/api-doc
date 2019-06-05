@@ -842,30 +842,10 @@ header {
   flex: 1;
 }
 
-.row-modules {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 20px 0;
+.modules {
+  text-align: center;
 }
 
-.row-modules:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.row-modules img {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-}
-
-.row-modules p {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-  padding: 0 10px 0 20px;
+.modules img {
+  margin: 20px;
 }
