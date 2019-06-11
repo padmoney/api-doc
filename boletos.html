@@ -237,7 +237,7 @@ layout: page
   "discount_limit_date": null,
   "discount_value": null,
   "discount_percentage": null,
-  "customer": {
+  "payer": {
     "person_type": "individual",
     "name": "Mony",
     "cnpj_cpf": "25411417260",
@@ -327,7 +327,7 @@ layout: page
         <div class="codigo">
             <div class="copy" data-clipboard-action="copy" data-clipboard-target="#consultar-retorno">Copy</div>
             <pre id="consultar-retorno">{
-  "id": 1906,
+  "id": "66f6dfd9-bdcb-4508-9fec-20be8b28df50",
   "request_id": "6BC42661-E9B6-49E1-A429-A5D9ABB65746",
   "document_number": 74,
   "our_number": "000000000074-4",
@@ -343,7 +343,7 @@ layout: page
   "status": "generating",
   "instructions": "BENEFICIARIO PRINCIPAL: NOME DO BENEFICIARIO PRINCIPAL LTDA CNPJ: 99.999.999/0001-91. Após o vencimento, incidência de multa de 2.00% mais juros de 0.23% ao dia.",
   "payment_place": "Pagável preferencialmente no Banco Santander",
-  "customer": {
+  "payer": {
     "person_type": "individual",
     "name": "Mony",
     "cnpj_cpf": "25411417260",
@@ -356,20 +356,7 @@ layout: page
     "address_complement": "2o andar",
     "city_name": "Vitória",
     "state": "ES"
-  },
-  "beneficiary": {
-    "name": "Padmoney Payment Security Ltda - ME",
-    "cnpj_cpf": "99999999000191",
-    "address": "Rua X 42 Centro - Vitória/ES - CEP 29090630"
-  },
-  "bank_contract_slug": "101",
-  "agency_number": "1234",
-  "agency_digit": "5",
-  "account_number": "56789",
-  "account_digit": "0",
-  "acceptance": "A",
-  "occurrence": null,
-  "email_sending_status": false
+  }
 }</pre>
         </div>
     </div>
@@ -425,12 +412,11 @@ layout: page
             <div class="copy" data-clipboard-action="copy" data-clipboard-target="#consultar-status-pre">Copy</div>
             <pre id="consultar-status-pre">[
   {
-    "id": 1906,
+    "id": "daaddb8d-eec1-034e-242e-9bc548bb3e84",
     "request_id": "6BC42661-E9B6-49E1-A429-A5D9ABB65746",
     "document_number": 74,
     "our_number": "000000000074-4",
     "document_date": "2017-11-27",
-    "document_type": "DM",
     "due_date": "2017-01-01",
     "processed_at": null,
     "amount": "1.99",
@@ -440,7 +426,6 @@ layout: page
     "identification_field": "03399897093350000000600074401019970260000000199",
     "status": "generating",
     "instructions": "BENEFICIARIO PRINCIPAL: NOME DO BENEFICIARIO PRINCIPAL LTDA CNPJ: 99.999.999/0001-91. Após o vencimento, incidência de multa de 2.00% mais juros de 0.23% ao dia.",
-    "payment_place": "Pagável preferencialmente no Banco Santander",
     "customer": {
       "person_type": "individual",
       "name": "Mony",
@@ -454,20 +439,7 @@ layout: page
       "address_complement": "2o andar",
       "city_name": "Vitória",
       "state": "ES"
-    },
-    "beneficiary": {
-      "name": "Padmoney Payment Security Ltda - ME",
-      "cnpj_cpf": "99999999000191",
-      "address": "Rua X 42 Centro - Vitória/ES - CEP 29090630"
-    },
-    "bank_contract_slug": "101",
-    "agency_number": "1234",
-    "agency_digit": "5",
-    "account_number": "56789",
-    "account_digit": "0",
-    "acceptance": "A",
-    "occurrence": null,
-    "email_sending_status": false
+    }
   },
   {
     "id": 1906,
@@ -475,7 +447,6 @@ layout: page
     "document_number": 74,
     "our_number": "000000000074-4",
     "document_date": "2017-11-27",
-    "document_type": "DM",
     "due_date": "2017-01-01",
     "processed_at": null,
     "amount": "1.99",
@@ -485,7 +456,6 @@ layout: page
     "identification_field": "03399897093350000000600074401019970260000000199",
     "status": "generating",
     "instructions": "BENEFICIARIO PRINCIPAL: NOME DO BENEFICIARIO PRINCIPAL LTDA CNPJ: 99.999.999/0001-91. Após o vencimento, incidência de multa de 2.00% mais juros de 0.23% ao dia.",
-    "payment_place": "Pagável preferencialmente no Banco Santander",
     "customer": {
       "person_type": "individual",
       "name": "Mony",
@@ -499,20 +469,7 @@ layout: page
       "address_complement": "2o andar",
       "city_name": "Vitória",
       "state": "ES"
-    },
-    "beneficiary": {
-      "name": "Padmoney Payment Security Ltda - ME",
-      "cnpj_cpf": "99999999000191",
-      "address": "Rua X 42 Centro - Vitória/ES - CEP 29090630"
-    },
-    "bank_contract_slug": "101",
-    "agency_number": "1234",
-    "agency_digit": "5",
-    "account_number": "56789",
-    "account_digit": "0",
-    "acceptance": "A",
-    "occurrence": null,
-    "email_sending_status": false
+    }
   }
 ]</pre>
         </div>
@@ -587,7 +544,7 @@ layout: page
             <div class="copy" data-clipboard-action="copy" data-clipboard-target="#listar-retorno">Copy</div>
             <pre id="listar-retorno">[
   {
-    "id": 1892,
+    "id": "abed7ef2-7188-de46-8f9a-596038713644",
     "customer": "Mony",
     "document_number": 70,
     "our_number": null,
@@ -599,12 +556,10 @@ layout: page
     "paid_amount": null,
     "status": "generating",
     "barcode": null,
-    "identification_field": null,
-    "occurrence": null,
-    "email_sending_status": false
+    "identification_field": null
   },
   {
-    "id": 1891,
+    "id": "345680b8-1a80-35a8-78b2-42e997f0c70a",
     "customer": "Mony",
     "document_number": 69,
     "our_number": null,
@@ -616,12 +571,10 @@ layout: page
     "paid_amount": null,
     "status": "generating",
     "barcode": null,
-    "identification_field": null,
-    "occurrence": null,
-    "email_sending_status": false
+    "identification_field": null
   },
   {
-    "id": 1890,
+    "id": "aa1294fa-76fb-5039-d0e2-29d9ab9ed5d8",
     "customer": "Mony",
     "document_number": 68,
     "our_number": null,
@@ -633,12 +586,10 @@ layout: page
     "paid_amount": null,
     "status": "generating",
     "barcode": null,
-    "identification_field": null,
-    "occurrence": null,
-    "email_sending_status": false
+    "identification_field": null
   },
   {
-    "id": 1889,
+    "id": "c981818b-6976-4538-eabb-c79594c7a0c4",
     "customer": "Mony",
     "document_number": 67,
     "our_number": null,
@@ -650,12 +601,10 @@ layout: page
     "paid_amount": null,
     "status": "generating",
     "barcode": null,
-    "identification_field": null,
-    "occurrence": null,
-    "email_sending_status": false
+    "identification_field": null
   },
   {
-    "id": 1888,
+    "id": "2cd84492-160b-e25d-460d-694f95805378",
     "customer": "Mony",
     "document_number": 66,
     "our_number": null,
@@ -667,9 +616,7 @@ layout: page
     "paid_amount": null,
     "status": "generating",
     "barcode": null,
-    "identification_field": null,
-    "occurrence": null,
-    "email_sending_status": false
+    "identification_field": null
   }
 ]</pre>
         </div>
