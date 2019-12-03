@@ -10,13 +10,97 @@ layout: page
     <h2>Ambiente de Testes</h2>
     <p>O Padmoney oferece um ambiente de testes (Sandbox) para uso da API.</p>
     <p>Este ambiente é completamente separado do ambiente de Produção, e nenhum dado é compartilhado entre os ambientes.</p>
-    <p>Para começar a utilizar o ambiente Sandbox, é necessário criar uma conta através do endereço <a href="https://dev.padmoney.com/system/conta/cadastrar">https://dev.padmoney.com/system/conta/cadastrar</a>.</p>
-    <p>Após criar a conta, você poderá utilizar o ambiente Sandbox da mesma forma que usará o ambiente de Produção.</p>
-    <p>Nenhuma validação de conta é realizada neste ambiente e logo após a criação da conta, você já conseguirá utilizar a API.</p>
+    <p>Após criar a conta, você poderá utilizar nossa API Sandbox da mesma forma que usará o ambiente de Produção.</p>
     <p>Atenção que o token de acesso da conta no ambiente Sandbox é diferente do token da sua conta no ambiente de Produção.</p>
 </div>
 <div class="bloco">
     <h2>Endpoint do Sandbox</h2>
-    <p>A URL Base do ambiente Sandbox é <strong>https://dev.padmoney.com/api/v2/</strong></p>
+    <p>A URL Base do ambiente Sandbox é <strong>https://dev.padmoney.com/v2/</strong></p>
     <p>Todas as requisições devem usar o schema https por questões de segurança.</p>
+</div>
+
+<div class="bloco">
+    <h2>Criar conta para testes</h2>
+
+        <p class="method-http verde">
+            <strong>POST</strong>
+            <code>/sandbox/accounts</code>
+        </p>
+
+		<p>Para criar uma conta de teste é necessário realizar uma requisição para o método <code>/sandbox/accounts</code> onde além dos dados da conta, será necessário informar o <code>secret_key</code> que deverá ser usado junto com o <code>token</code> retornado na requisição. Exemplo:</p>
+
+            <div class="codigo">
+<pre id="token">
+Padmoney-Token: JDJhJDEwJDJxLnl5REFHZG52UkFSMjl3Z2ZXeE9Uc2RIY3pRYW1tS2JRS1paT2JFTVdsbmlhVFhXb3B1
+Padmoney-Token-Secret: 123456
+</pre>
+<p>O <code>Padmoney-Token</code> e o <code>Padmoney-Token-Secret</code> devem ser usados no <strong>HEADER</strong> das requisições.</p>
+            </div>
+
+	<h3>Exemplo da requisição</h3>
+            <div class="codigo">
+                <div class="copy" data-clipboard-action="copy" data-clipboard-target="#criar-exemplo">Copy</div>
+                <pre id="criar-exemplo">{
+  "name": "Seu Nome",
+  "nickname": "Como prefere ser chamado",
+  "document": "99999999901",
+  "email": "seu@email.com",
+  "phone": "Seu Telefone",
+  "address": {
+    "address_1": "Rua",
+    "neighborhood": "Bairro",
+    "number": "Número",
+    "zipcode": "CEP",
+    "city": "Cdade",
+    "state": "UF"
+  },
+  "sandbox": {
+    "secret_key": "123456"
+  }
+}</pre>
+            </div>
+			
+            <h3>Retorno</h3>
+            <div class="codigo">
+                <div class="copy" data-clipboard-action="copy" data-clipboard-target="#retorno-criar-conta-teste">Copy</div>
+                <pre id="retorno-criar-conta-teste">{
+  "name": "Seu Nome",
+  "nickname": "Como prefere ser chamado",
+  "document": "99999999901",
+  "email": "seu@email.com",
+  "phone": "Seu Telefone",
+  "address": {
+    "address_1": "Rua",
+    "neighborhood": "Bairro",
+    "number": "Número",
+    "zipcode": "CEP",
+    "city": "Cdade",
+    "state": "UF"
+  },
+  "sandbox": {
+    "token": "JDJhJDEwJDJxLnl5REFHZG52UkFSMjl3Z2ZXeE9Uc2RIY3pRYW1tS2JRS1paT2JFTVdsbmlhVFhXb3B1"
+  }
+}</pre>
+            </div>
+</div>
+
+<div class="bloco">
+	<h2>Simular pagamento de boleto bancário</h2>
+
+        <p class="method-http amarelo">
+            <strong>PUT</strong>
+			<code>/sandbox/notifications/bank-billets/{id}/pay</code>
+        </p>
+
+	<p>O ambiente DEV permite simular o pagamento de um boleto bancário de teste. Para isso basta realizar a seguinte requisição informando o ID do boleto.</p>
+</div>
+<div class="bloco">
+	<h2>Simular pagamento de boleto bancário</h2>
+
+        <p class="method-http amarelo">
+            <strong>PUT</strong>
+			<code>/sandbox/notifications/bank-billets/{id}/cancel</code>
+        </p>
+
+	<p>O ambiente DEV permite simular o cancelamento de um boleto bancário de teste. Para isso basta realizar a seguinte requisição informando o ID do boleto.</p>
 </div>
