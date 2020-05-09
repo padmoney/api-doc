@@ -1,0 +1,608 @@
+---
+layout: reference
+---
+
+<div class="resources">
+    <div class="reference">
+        <h1>
+            Boletos Bancários
+        </h1>
+
+    </div>
+    <div class="sample">
+    </div>
+</div>
+
+<div class="resources">
+    <div class="reference">
+
+    <h2 id="create-bank-billet">
+        Criar Boleto
+    </h2>
+
+    <div class="operation-verbpath post">
+    <span>POST</span>
+    /bank-billets
+    </div>
+
+    <div class="info">
+        Importante registrar o boleto através de algum dos campos abaixo para futura identificação:
+        <ul>
+            <li><code>our_number</code> - Nosso Número</li>
+            <li><code>barcode</code> - Código de Barras</li>
+            <li><code>identification_field</code> - Linha Digitável</li>
+        </ul>
+    </div>
+    <table>
+        <thead>
+           <th>Campo</th>
+           <th class="center">Obrigatório</th>
+           <th>Tipo</th>
+           <th>Tamanho</th>
+           <th>Descrição</th>
+       </thead>
+       <tbody>
+           <tr>
+               <td>amount</td>
+               <td class="center">Sim</td>
+               <td class="center">Number</td>
+               <td class="center">&nbsp;</td>
+               <td>Valor do boleto</td>
+           </tr>
+           <tr>
+               <td>due_date</td>
+               <td class="center">Sim</td>
+               <td class="center">Date</td>
+               <td class="center">&nbsp;</td>
+               <td>Data de vencimento</td>
+           </tr>
+           <tr>
+               <td>customer_document_number</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0-25</td>
+               <td>Número do boleto controlado pelo cliente</td>
+           </tr>
+           <tr>
+               <td>description</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0-150</td>
+               <td>Descrição do produto ou serviço</td>
+           </tr>
+           <tr>
+               <td>discount_type</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">&nbsp;</td>
+               <td>Tipo de desconto (<a href="#bank-billets-discount">possíveis valores</a>)</td>
+           </tr>
+           <tr>
+               <td>discount_limit_date</td>
+               <td class="center">Não</td>
+               <td class="center">Date</td>
+               <td class="center">&nbsp;</td>
+               <td>Data limite para o desconto (Obrigatória se discount_type é diferente de <code>none</code> e <code>auto</code>)</td>
+           </tr>
+           <tr>
+               <td>discount_value</td>
+               <td class="center">Não</td>
+               <td class="center">Number</td>
+               <td class="center">&nbsp;</td>
+               <td>Valor do desconto (Obrigatório se discount_type é igual a <code>value</code>)</td>
+           </tr>
+           <tr>
+               <td>discount_percentage</td>
+               <td class="center">Não</td>
+               <td class="center">Number</td>
+               <td class="center">&nbsp;</td>
+               <td>Percentual do desconto (Obrigatório se discount_type é igual a <code>percentage</code>)</td>
+           </tr>
+           <tr>
+               <td>virtual_account</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0-12</td>
+               <td>Número da Conta Virtual (Se nulo, utiliza a conta virtual padrão configurada no padmoney)</td>
+           </tr>
+           <tr>
+               <td>interest_monthly_percentage</td>
+               <td class="center">Não</td>
+               <td class="center">Number</td>
+               <td class="center">&nbsp;</td>
+               <td>Juros de mora (Se nulo, utiliza os valores configurados na conta padmoney)</td>
+           </tr>
+           <tr>
+               <td>fine_for_delay</td>
+               <td class="center">Não</td>
+               <td class="center">Number</td>
+               <td class="center">&nbsp;</td>
+               <td>Multa por atraso (Se nulo, utiliza os valores configurados na conta padmoney)</td>
+           </tr>
+           <tr>
+               <td>payer</td>
+               <td class="center">Sim</td>
+               <td class="center">Group</td>
+               <td class="center">&nbsp;</td>
+               <td>`customer` é uma alias para `payer`</td>
+           </tr>
+           <tr>
+               <td> > person_type</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">&nbsp;</td>
+               <td>Tipo da pessoa (<a href="#person-types">possíveis valores</a>)</td>
+           </tr>
+           <tr>
+               <td> > name</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">1 - 100</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > cnpj_cpf</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">&nbsp;</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > email</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">5 - 100</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > phone_number</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">11 - 16</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > zipcode</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">8</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > address</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">1 - 100</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > neighborhood</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">1 - 50</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > address_number</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">1 - 60</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > address_complement</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0 - 100</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > city_name</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">2 - 100</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td> > state</td>
+               <td class="center">Sim</td>
+               <td class="center">String</td>
+               <td class="center">2</td>
+               <td>Unidades Federativas do Brasil</td>
+           </tr>
+           <tr>
+               <td>url_notification</td>
+               <td class="center">Não</td>
+               <td class="center">URL</td>
+               <td class="center">0 - 256</td>
+               <td>Define uma URL de Notificação específica para o Boleto</td>
+           </tr>
+           <tr>
+               <td>code_notification</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0 - 36</td>
+               <td>Define um Código de Notificação específica para o Boleto</td>
+           </tr>
+           <tr>
+               <td>partner_id</td>
+               <td class="center">Não</td>
+               <td class="center">String</td>
+               <td class="center">0 - 100</td>
+               <td>ID do Parceiro (Encontrado no painel do Padmoney em Programa de Afiliados)</td>
+           </tr>
+        </tbody>
+    </table>
+
+    {%- include bank-billets-discount.html -%}
+    {%- include person-types.html -%}
+
+    <h3>
+        Exemplo da requisição
+    </h3>
+
+<pre><code class="language-json">{
+  "amount": 1.99,
+  "due_date": "2017-01-01",
+  "document_number": "42",
+  "description": "",
+  "discount_type": "auto",
+  "discount_limit_date": null,
+  "discount_value": null,
+  "discount_percentage": null,
+  "payer": {
+    "person_type": "individual",
+    "name": "Mony",
+    "cnpj_cpf": "25411417260",
+    "email": "nome@email.com",
+    "phone_number": "",
+    "zipcode": "29090630",
+    "address": "Rua Alan Turing",
+    "neighborhood": "Bairro das Laranjeiras",
+    "address_number": "42",
+    "address_complement": "2o andar",
+    "city_name": "Vitória",
+    "state": "ES"
+  }
+}</code></pre>
+
+
+    </div>
+    <div class="sample">
+        <ul>
+            <li class="referente-item ok"><a class="sample-item" href="javascript:void(0)">200</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">400</a></li>
+        </ul>
+        <div class="code-sample-body">
+            <div>
+                <pre><code class="language-json">[{
+  "id": "02805593-3315-9b78-75d0-b7ff9d700596",
+  "request_id": "bd34bc2a-bbb1-908f-458c-6a7945fe377c",
+  "document_number": "42",
+  "due_date": "2017-01-01",
+  "our_number": "000000003083-1",
+  "barcode": "03391775600000012999987654300000000308800101",
+  "identification_field": "03399987675430000000403088001015177560000001299",
+  "status": "opened",
+  "url": "https://print.padmoney.com/bank-billets/2bm1984"
+}]</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">{}</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="resources">
+    <div class="reference">
+        <h2 id="cancel-bank-billet">
+            Cancelar Boleto
+        </h2>
+
+        <div class="operation-verbpath put">
+        <span>PUT</span>
+        /bank-billets/{id}/cancel
+        </div>
+
+        <p>
+            Você pode cancelar apenas boletos com status Emitido opened ou Vencido overdue.
+        </p>
+
+        <p>
+            Poderá ser informado como ID do Boleto:
+        </p>
+        <ul>
+            <li>ID do Boleto</li>
+            <li>Nosso Número</li>
+            <li>Linha Digitável</li>
+        </ul>
+    
+    </div>
+    <div class="sample">
+        <ul>
+            <li class="referente-item ok"><a class="sample-item" href="javascript:void(0)">200</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">400</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">404</a></li>
+        </ul>
+        <div class="code-sample-body">
+            <div>
+            <pre><code class="language-json">{
+  "id": "f9607ac2-45ff-4fc3-99de-33fcb277477a",
+  "request_id": "6BC42661-E9B6-49E1-A429-A5D9ABB65746",
+  "our_number": "000000000042-X",
+  "status": "canceling"
+}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">{}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">No body returned for response</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="resources">
+    <div class="reference">
+        <h2 id="list-bank-billets">
+            Listar Boletos
+        </h2>
+
+        <div class="operation-verbpath get">
+        <span>GET</span>
+        /bank-billets?page=1&per_page=50
+        </div>
+
+        <p>
+            Parâmetros
+        </p>
+        
+        <table>
+            <thead>
+                <th>Parâmetro</th>
+                <th>Obrigatório</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>page</td>
+                    <td class="center">Não</td>
+                    <td class="center">Number</td>
+                    <td>Número da Página</td>
+                </tr>
+                <tr>
+                    <td>per_page</td>
+                    <td class="center">Não</td>
+                    <td class="center">Number</td>
+                    <td>Quantidade de Registros por página (Máximo de 250)</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>
+    <div class="sample">
+        <ul>
+            <li class="referente-item ok"><a class="sample-item" href="javascript:void(0)">200</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">400</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">404</a></li>
+        </ul>
+        <div class="code-sample-body">
+            <div>
+            <pre><code class="language-json">[
+  {
+    "id": "abed7ef2-7188-de46-8f9a-596038713644",
+    "payer": {
+      "name": "Mony",
+      "document": "14770932065",
+      "email": "mony@email.com",
+      "zipcode": "29092270",
+      "address": "Avenida Engenheiro Charles Bitran ",
+      "neighborhood": "Jd Camburi",
+      "address_number": "42",
+      "address_complement": "",
+      "city_name": "Vitória",
+      "state": "ES"
+	},
+    "document_number": "70",
+    "our_number": "0000012345-6",
+    "document_date": "2017-01-01",
+    "due_date": "2017-02-01",
+    "processed_at": "2017-01-01",
+    "amount": "1.99",
+    "status": "opened",
+    "barcode": "",
+    "identification_field": ""
+  },
+  {...},
+  {...},
+  {...},
+  {...}
+]</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">{}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">No body returned for response</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="resources">
+    <div class="reference">
+        <h2 id="get-bank-billet">
+            Consultar Boleto
+        </h2>
+
+        <div class="operation-verbpath get">
+        <span>GET</span>
+        /bank-billets/{id}
+        </div>
+
+        <p>
+            Poderá ser informado como ID do Boleto:
+        </p>
+        <ul>
+            <li>ID do Boleto</li>
+            <li>Nosso Número</li>
+            <li>Código de Barras</li>
+            <li>Linha Digitável</li>
+        </ul>
+
+    </div>
+    <div class="sample">
+        <ul>
+            <li class="referente-item ok"><a class="sample-item" href="javascript:void(0)">200</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">400</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">404</a></li>
+        </ul>
+        <div class="code-sample-body">
+            <div>
+            <pre><code class="language-json">{
+  "id": "66f6dfd9-bdcb-4508-9fec-20be8b28df50",
+  "request_id": "6BC42661-E9B6-49E1-A429-A5D9ABB65746",
+  "document_number": "74",
+  "our_number": "000000000074-4",
+  "document_date": "2017-11-27",
+  "due_date": "2017-01-01",
+  "processed_at": "2017-01-01",
+  "amount": "1.99",
+  "canceled_at": null,
+  "paid_at": null,
+  "paid_amount": null,
+  "barcode": "03399702600000001999897033500000000007440101",
+  "identification_field": "03399897093350000000600074401019970260000000199",
+  "status": "opened",
+  "payer": {
+    "person_type": "individual",
+    "name": "Mony",
+    "cnpj_cpf": "25411417260",
+    "email": "monny@padmoney.com",
+    "phone_number": "",
+    "zipcode": "29090630",
+    "address": "Rua Alan Turing",
+    "neighborhood": "Bairro das Laranjeiras",
+    "address_number": "42",
+    "address_complement": "2o andar",
+    "city_name": "Vitória",
+    "state": "ES"
+  }
+}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">{}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">No body returned for response</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="resources">
+    <div class="reference">
+        <h2 id="get-bank-billet-by-status">
+            Consultar Boleto por Status
+        </h2>
+
+        <div class="operation-verbpath get">
+        <span>GET</span>
+        /bank-billets/status?q=opened&date=2017-01-01
+        </div>
+
+        <p>
+            Parâmetros
+        </p>
+        <table>
+            <thead>
+                <th>Parâmetro</th>
+                <th>Obrigatório</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>q</td>
+                    <td class="center">Sim</td>
+                    <td class="center">String</td>
+                    <td>Status do Boleto (<a href="#bank-billets-status">possíveis valores</a>)</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td class="center">Não</td>
+                    <td class="center">Date</td>
+                    <td>Data de movimentação do Boleto</td>
+                </tr>
+                <tr>
+                    <td>page</td>
+                    <td class="center">Não</td>
+                    <td class="center">Number</td>
+                    <td>Número da Página</td>
+                </tr>
+                <tr>
+                    <td>per_page</td>
+                    <td class="center">Não</td>
+                    <td class="center">Number</td>
+                    <td>Quantidade de Registros por página (Máximo de 250)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        {%- include bank-billets-status.html -%}
+
+    </div>
+    <div class="sample">
+        <ul>
+            <li class="referente-item ok"><a class="sample-item" href="javascript:void(0)">200</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">400</a></li>
+            <li class="bad-request"><a class="sample-item" href="javascript:void(0)">404</a></li>
+        </ul>
+        <div class="code-sample-body">
+            <div>
+            <pre><code class="language-json">[
+  {
+    "id": "daaddb8d-eec1-034e-242e-9bc548bb3e84",
+    "request_id": "6BC42661-E9B6-49E1-A429-A5D9ABB65746",
+    "document_number": "74",
+    "our_number": "000000000074-4",
+    "document_date": "2017-11-27",
+    "due_date": "2017-01-01",
+    "processed_at": "2017-01-01",
+    "amount": "1.99",
+    "paid_at": null,
+    "paid_amount": null,
+    "barcode": "03399702600000001999897033500000000007440101",
+    "identification_field": "03399897093350000000600074401019970260000000199",
+    "status": "opened",
+    "payer": {
+      "person_type": "individual",
+      "name": "Mony",
+      "cnpj_cpf": "25411417260",
+      "email": "monny@padmoney.com",
+      "phone_number": "",
+      "zipcode": "29090630",
+      "address": "Rua Alan Turing",
+      "neighborhood": "Bairro das Laranjeiras",
+      "address_number": "42",
+      "address_complement": "2o andar",
+      "city_name": "Vitória",
+      "state": "ES"
+    }
+  },
+  {...},
+  {...}
+]</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">{}</code></pre>
+            </div>
+            <div>
+                <pre><code class="language-json">No body returned for response</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
