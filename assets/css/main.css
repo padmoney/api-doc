@@ -58,13 +58,15 @@ h3 {
 }
 
 .sidebar {
-  width: 280px;
-  position: absolute;
+  position: fixed;
+  overflow-y: auto;
   left: 0;
   top: 0;
   height: 100%;
   background: #f8f8f9;
   min-height: 100vh;
+  transition: all .35s ease-in-out;
+  width: 280px;
 }
 
 .sidebar a {
@@ -96,28 +98,6 @@ nav ul li.nav-title {
 nav ul.items {
   padding-left: 0.6em;
   margin: 0.2em 0;
-}
-nav ul.items li {
-  -moz-border-radius:0 !important;
-  -webkit-border-radius:0 !important;
-  -o-border-radius:0 !important;
-  -ms-border-radius:0 !important;
-  border-color: #1171AF;
-  border-style: solid;
-  border-width: 0 0 0 3px;
-  display: block;
-}
-nav ul.items li:first-child{
-  -moz-border-radius:3px 0 0 0 !important;
-  -webkit-border-radius:3px 0 0 0 !important;
-  -o-border-radius:3px 0 0 0 !important;
-  -ms-border-radius:3px 0 0 0 !important;
-}
-nav ul.items li:last-child {
-  -moz-border-radius:0 0 0 3px !important;
-  -webkit-border-radius:0 0 0 3px !important;
-  -o-border-radius:0 0 0 3px !important;
-  -ms-border-radius:0 0 0 3px !important;
 }
 
 header {
@@ -222,7 +202,7 @@ table td, table th {
 .operation-verbpath {
   font-family: 'Inconsolata', monospace;
   font-size: 1em;
-  margin: 0.6em 0;
+  margin: 0.6em 2em;
 
   letter-spacing: 1px;
   font-weight: bold;
@@ -233,7 +213,6 @@ table td, table th {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: calc(100% - 1rem);
 }
 .operation-verbpath span {
   -moz-border-radius:3px !important;
@@ -257,22 +236,14 @@ table td, table th {
   padding: 0.25rem 0.25rem;
   text-align: center;
 }
-.delete {
-}
 .delete span {
   background: #e0245e;
-}
-.get {
 }
 .get span {
   background: #36B37E;
 }
-.put {
-}
 .put span {
-  background: #640487;
-}
-.post {
+  background: #ba6dd6;
 }
 .post span {
   background: #1da1f2;
@@ -281,29 +252,46 @@ table td, table th {
 .center {
   text-align: center;
 }
-
 .right {
   text-align: right;
-
 }
 
-
+.info {
+  -moz-border-radius:5px !important;
+  -webkit-border-radius:5px !important;
+  -o-border-radius:5px !important;
+  -ms-border-radius:5px !important;
+  border-style: solid;
+  border-width: 1px;
+  padding: 1em 1em 1em 64px;
+  margin: 1em 2em;
+  min-height: 64px;
+}
+.info ul {
+  margin: 0;
+}
 
 .info {
   background: no-repeat url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAO5SURBVFiFxZjPa1xVFMc/586bZCbmTWwXCcjMxKpounAlgtWmCpEE1KVO0EVDg1KxjZb+Bf4DUkwjJVVoZnTTiEsLgaJgW6XUhRvTFCFNZkJJGynzI2Smybx3XHRsJ/ODzHuZ6Hd373nnez+P9+69517Bo2Iz2WeRwAhwWHEHBOkH7Eo4r2haMAsoV8R15tLjTy568ZeWnprVQLSUH0XlhMCrHvxV4TdRncp0RWZJiLNroFgqN4LKJPC8B5B6MlgwmIn0WPdlX0DRWQ2bYmFS4cPdgNSBCecJ2adWElJsGagvVejtUC6BvtROmKpRb2yV5e3VcXttR6C+VKG3U/UXhRf2BKYihYWyI0dqoUx1Izqr4Q7l0l7DAAgMBC398ekLGmoKZIqFyT37TI2kvOxI/kxDoFgqN+LjBy4JemrLkd4tR3pRPQ2UPDmIfByfWR961ATgZ7Vi6cKfeJzaik6sjPVMVffFZ3KfqsiXnqDgZiZsv0hCHAMQXc6PeoUB1HLd72o7rQdOElCPXgdjxfV3ofLJROSkRwMAzKY2G9grEKAnAUz029xzwCs+eGQzZL1X21nuDI5SM1la1Gv9qewBS1wz7OuFAIEzsVS+rCH7IoAUC+8r+oUvMxDVwLAFHPZpANCNckGKha8rbWsXXiAMWpUSwkeu/qHIX9t7dR/IEK1WETVSZcASJO4jt2jcyKGlY1K35kSTucvyEMoPUtzwuLjyolIjGAAjkvUHA0DEz2wAeCL6TW7/LgZuKgMUfOR1SFBux5K5r9rMkzeCZnwmR0Skr604SNooZr69pv4l6E0DXPu/QR5LrhrUmcPHUq1wD6X+iKMsKtzzQaPGLc8JQDyZ/1XhkIfkB8FSuW/x+P5co+Az0/d7tkLWXaDTg+fVzFhk0AC4olM7PV2jjWYwAJXYhhdDUTkLlV15JRS5KHDLQ344OqvhZsGnpu90AU3jdVLm013dP0DVnhObyQ4jZq5VD4Fb2mTJECTm5aBgRIaWj9o/bQMCiCfz5xU+atWoLRI9lzna88kjuOqYG7Y/A37/D3GuB5zI6eqObUArCSluOfKWx//JlxQWnCDv1G7SdZvr6ri9tunIIMKNPeS5XnbkyJ0PIn/XBhru9qvj9pqG7NeB6bajiJ4LuPYbjc710EJlF0+uv+ninhUY2BWIMm+MTPw7m5qp5Qur2EY+gcgJHl5YtVqiKnANZCpzu/t7Phd3pwTPtW9/KntANTCMMKguBxHddqUHsizCAsoV45bnlo7tW/Li/w9c8FGwRTQTBwAAAABJRU5ErkJggg==');
   background-color: #e8f5fd;
   background-position: 14px center;
-
-  -moz-border-radius:5px !important;
-  -webkit-border-radius:5px !important;
-  -o-border-radius:5px !important;
-  -ms-border-radius:5px !important;
   border-color: #bbe2fb;
-  border-style: solid;
-  border-width: 1px;
+}
 
-  padding: 1em 1em 1em 64px;
-  margin: 1em 2em;
-  min-height: 64px;
+@media screen and (max-width: 768px) {
+  article, header, main {
+    max-width: 70ch;
+  }
+}
 
+@media screen and (min-width: 900px) {
+  article, header, main {
+    max-width: 85ch;
+  }
+  ul.posts li div.time {
+    float:left;
+    margin-right:1em;
+    text-align: right;
+    width: 150px;
+  }
 }
