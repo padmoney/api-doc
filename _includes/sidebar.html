@@ -1,17 +1,13 @@
-<header class="mobile">
-    <div class="logo">
-        <img src="/assets/img/logo-padmoney-mono.png" alt="Logo Padmoney" class="logo_barra">
-    </div>
-    <a href="javascript:void(0);" class="botao menu"><img src="/assets/img/menu.png" alt=""></a>
-</header>
+<div class="sidebar">
 
-<div class="barra-lateral">
-    <img src="/assets/img/fechar.png" alt="" class="fechar mobile">
-    <div class="logo">
-        <img src="/assets/img/logo-padmoney-mono.png" alt="Logo Padmoney" class="logo_barra">
-    </div>
-    <div class="menu">
+    <header>
+        <img src="https://static.padmoney.com/img/logo-padmoney.png" alt="">
+    </header>
+
+    <nav>
         <ul>
+            <li class="nav-title">API Reference</li>
+
             <li>
                 <a href="/index">Introdução</a>
             </li>
@@ -26,30 +22,21 @@
             </li>
             <li class="has-accordion">
                 <a href="javascript:void(0);">Boletos</a>
-                <ul>
-                    <li><a data-scroll href="/boletos#criar-boleto">Criar Boleto</a></li>
-                    <li><a data-scroll href="/boletos#cancelar-boleto">Cancelar Boleto</a></li>
-                    <li><a data-scroll href="/boletos#consultar-boleto">Consultar Boleto</a></li>
-                    <li><a data-scroll href="/boletos#consultar-status">Consultar Boleto por Status</a></li>
-                    <li><a data-scroll href="/boletos#imprimir">Imprimir Boleto</a></li>
-                    <li><a data-scroll href="/boletos#listar-boleto">Listar Boletos</a></li>
+                <ul class="items">
+                    <li><a data-scroll href="/bank-billets#create-bank-billet">Criar Boleto</a></li>
+                    <li><a data-scroll href="/bank-billets#cancel-bank-billet">Cancelar Boleto</a></li>
+                    <li><a data-scroll href="/bank-billets#list-bank-billets">Listar Boletos</a></li>
+                    <li><a data-scroll href="/bank-billets#get-bank-billet">Consultar Boleto</a></li>
+                    <li><a data-scroll href="/bank-billets#get-bank-billet-by-status">Consultar Boleto por Status</a></li>
                 </ul>
             </li>
             <li class="has-accordion">
                 <a href="javascript:void(0);">Notificações</a>
-                <ul>
-                    <li><a data-scroll href="/notificacoes">Notificações de Transações</a></li>
-                    <li><a data-scroll href="/notificacoes#url-notificacao">Definir URL de Notificações</a></li>
-                </ul>
-            </li>
-            <li class="has-accordion">
-                <a href="javascript:void(0);">Parametrização</a>
-                <ul>
-                    <li><a data-scroll href="/parametrizacao#status-boleto">Status do Boleto</a></li>
-                    <li><a data-scroll href="/parametrizacao#tipo-desconto">Tipo de Desconto</a></li>
-                    <li><a data-scroll href="/parametrizacao#tipo-pessoa">Tipo de Pessoa</a></li>
+                <ul class="items">
+                    <li><a data-scroll href="/callback">Notificações de Transações</a></li>
+                    <li><a data-scroll href="/callback#url">Definir URL de Notificações</a></li>
                 </ul>
             </li>
         </ul>
-    </div>
+    </nav>
 </div>
