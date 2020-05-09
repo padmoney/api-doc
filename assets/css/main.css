@@ -58,15 +58,7 @@ h3 {
 }
 
 .sidebar {
-  position: fixed;
-  overflow-y: auto;
-  left: 0;
-  top: 0;
-  height: 100%;
   background: #f8f8f9;
-  min-height: 100vh;
-  transition: all .35s ease-in-out;
-  width: 280px;
 }
 
 .sidebar a {
@@ -107,28 +99,18 @@ header {
 }
 
 article, section {
-  content: "";
   line-height: 1.6em;
-  z-index: -1;
-  padding: 0 0 0 280px;
+  padding: 0;
 }
 article {
-  max-width: 1240px;
-  padding: 0 0 0 300px;
+  padding: 1em;
 }
 
 .resources {
-  display: flex;
-  align-items: center;
-  justify-content: stretch;
   width: 100%;
-}
-.resources> * {
-  align-self: stretch;
 }
 
 .reference {
-  flex: 1;
   padding: 1em;
 }
 
@@ -141,7 +123,6 @@ article {
   background-color: #2d2d2d;
   color: #c3c6c4;
   padding: 1em 0;
-  width: 30%;
 }
 
 .sample ul {
@@ -184,7 +165,6 @@ article {
 }
 
 table {
-  border-collapse: separate;
   border-collapse: collapse;
   border-spacing: 0.5rem;
   margin: 1em 0;
@@ -202,7 +182,7 @@ table td, table th {
 .operation-verbpath {
   font-family: 'Inconsolata', monospace;
   font-size: 1em;
-  margin: 0.6em 2em;
+  margin: 0.6em 1em;
 
   letter-spacing: 1px;
   font-weight: bold;
@@ -264,7 +244,7 @@ table td, table th {
   border-style: solid;
   border-width: 1px;
   padding: 1em 1em 1em 64px;
-  margin: 1em 2em;
+  margin: 1em;
   min-height: 64px;
 }
 .info ul {
@@ -279,19 +259,88 @@ table td, table th {
 }
 
 @media screen and (max-width: 768px) {
-  article, header, main {
-    max-width: 70ch;
+  table {
+    display: table;
+  }
+  table thead {
+    display: none;
+  }
+  table tr {
+    box-sizing: content-box;
+    display: block;
+    margin: 0.4em 0;
+  }
+  table td {
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    display: block;
+    text-align: right;
+  }
+  table td:first-child {
+    border-width: 3px 1px 0 1px;
+  }
+  table td:last-child {
+    border-width: 1px 1px 1px 1px;
+  }
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-size: 0.8em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  table td.center {
+    text-align: right;
   }
 }
 
 @media screen and (min-width: 900px) {
-  article, header, main {
-    max-width: 85ch;
-  }
-  ul.posts li div.time {
-    float:left;
-    margin-right:1em;
-    text-align: right;
-    width: 150px;
-  }
+
+.sidebar {
+  position: fixed;
+  overflow-y: auto;
+  left: 0;
+  top: 0;
+  height: 100%;
+  min-height: 100vh;
+  transition: all .35s ease-in-out;
+  width: 280px;
+}
+
+article, section {
+  padding: 0 0 0 280px;
+  z-index: -1;
+}
+article {
+  max-width: 1240px;
+  padding: 0 0 0 300px;
+}
+
+.resources {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+}
+.resources> * {
+  align-self: stretch;
+}
+
+.reference {
+  flex: 1;
+}
+
+.sample {
+  width: 30%;
+}
+
+.operation-verbpath {
+  margin: 0.6em 2em;
+}
+
+.info {
+  margin: 1em 2em;
+}
+
 }

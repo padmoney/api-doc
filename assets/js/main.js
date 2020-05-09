@@ -3,6 +3,12 @@ $(document).ready(function() {
   $(".sample ul li:first-child").toggleClass('active');
   $(".code-sample-body div:first-child").toggleClass('active');
 
+  $("table tbody tr td").each((el) => {
+    var idx = $("table tbody tr td").eq(el).index();
+    var label =  $("table thead tr th").eq(idx).html();
+    $("table tbody tr td").eq(el).attr('data-label', label);
+  });
+
   $('.menu').click(function() {
     $('.barra-lateral').toggleClass('active');
     $('.overlay').toggleClass('active');
