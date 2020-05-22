@@ -1,0 +1,104 @@
+---
+layout: page
+---
+
+<h1>
+    Padmoney SKD for PHP
+</h1>
+
+<p>
+    <img src="https://travis-ci.org/padmoney/padmoney-sdk-php.svg?branch=master" alt="Build Status">
+</p>
+
+<h3>
+    Código fonte
+</h3>
+
+<p>
+    <a href="https://github.com/padmoney/padmoney-sdk-php">https://github.com/padmoney/padmoney-sdk-php</a>
+</p>
+
+<h3>
+    Instalação
+</h3>
+
+<p>
+    Via composer:
+</p>
+
+
+<pre><code class="language-sh">composer require padmoney/sdk
+</code></pre>
+
+<h3>
+    Como usar
+</h3>
+
+<p>
+    <a href="https://github.com/padmoney/padmoney-sdk-php">Nosso SDK está disponível na plataforma Github</a>, onde além de todo o código fonte temos o diretório <a href="https://github.com/padmoney/padmoney-sdk-php/tree/master/samples">/samples</a> contendo exemplos das mais diversas funcionalidades.
+</p>
+
+<h3>
+    Exemplo
+</h3>
+
+<p>
+    Instanciar Invoice e autenticação
+</p>
+
+<pre><code class="language-php">
+// Token e Token-Secret para autenticação da API
+$autenticacao = [
+    'token' => 'dG9rZW4tYXBpLVBhZG1vbmV5',
+    'token-secret' => '123',
+];
+
+// Instancia a classe Invoice, onde será possível
+// criar uma nova cobrança,
+// cancelar uma cobrança pelo $id
+// assim como buscar uma ou várioas cobranças
+$invoice = new \Padmoney\Invoice\Invoice($autenticacao);
+</code></pre>
+
+<p>
+    Criando uma nova cobrança
+</p>
+
+<pre><code class="language-php">
+$autenticacao = [
+    'token' => 'dG9rZW4tYXBpLVBhZG1vbmV5',
+    'token-secret' => '123',
+];
+$invoice = new \Padmoney\Invoice\Invoice($autenticacao);
+
+// dados da cobrança
+$params = [
+    'amount' => 1.99,
+    'due_date' => '2020-05-22',
+    'description' =>  'Detalhe da cobrança',
+];
+$retorno = $invoice->create($params);
+
+var_dump($retorno);
+</code></pre>
+
+<p>
+    Listar cobranças
+</p>
+
+<pre><code class="language-php">
+$autenticacao = [
+    'token' => 'dG9rZW4tYXBpLVBhZG1vbmV5',
+    'token-secret' => '123',
+];
+$invoice = new \Padmoney\Invoice\Invoice($autenticacao);
+
+// filtros
+$query = [
+    'payer_id' => '',
+    'status' => 'overdue', 
+];
+$all = $invoice->list($query);
+
+var_dump($all);
+</code></pre>
